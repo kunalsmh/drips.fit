@@ -170,7 +170,7 @@
           showCopiedMessage(coordText);
         })
         .catch(err => {
-          console.error('Failed to copy coordinates:', err);
+          console.error('Failed', err);
         });
     }
   }
