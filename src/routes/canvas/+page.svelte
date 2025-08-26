@@ -164,7 +164,7 @@
     if (idx !== null) {
       const { x, y } = images[idx];
 
-      const coordText = `https://dripcheck.vercel.app/coords/${Math.round(x)},${Math.round(y)}`;
+      const coordText = `https://dripchecks.vercel.app/coords/${Math.round(x)},${Math.round(y)}`;
       navigator.clipboard.writeText(coordText)
         .then(() => {
           showCopiedMessage(coordText);
