@@ -1,9 +1,7 @@
 <script lang="ts">
 	import WorldHexGrid from '$lib/WorldHexGrid.svelte';
 	import { goto } from '$app/navigation';
-	import { xml } from 'd3';
 
-	// Updated image type
 	export let data: {
 		images: {
 			id: number;
@@ -45,7 +43,7 @@
 		<!-- Left: Text -->
 		<div class="relative z-10 space-y-6 text-center lg:w-1/2 lg:text-left">
 			<h1 class="ds text-4xl leading-tight font-bold lg:text-5xl">
-				The Finals<br />drip sandbox
+				The Finals<br />drip canvas
 			</h1>
 			<p class="dss text-md font-mono text-gray-700">
 				Press the region on the world map<br />
@@ -68,11 +66,14 @@
 					class="mt-2 w-full max-w-md overflow-hidden rounded-md border border-gray-200 bg-white text-left text-sm shadow"
 				>
 					{#each filtered as image}
-						<li
-							class="cursor-pointer px-4 py-2 hover:bg-gray-100"
-							on:click={() => handleClick(image)}
-						>
-							{image.name}
+						<li>
+							<button
+								type="button"
+								class="w-full px-4 py-2 text-left hover:bg-gray-100"
+								on:click={() => handleClick(image)}
+							>
+								{image.name}
+							</button>
 						</li>
 					{/each}
 				</ul>
@@ -81,12 +82,13 @@
 			{/if}
 		</div>
 
-		<!-- Right: Map -->
-		<div class="z-2 mt-12 flex justify-center lg:mt-0 lg:w-1/2">
+		<!-- Right: Map (Hidden on Mobile) -->
+		<div class="z-2 mt-12 hidden justify-center lg:mt-0 lg:flex lg:w-1/2">
 			<WorldHexGrid />
 		</div>
 	</div>
 
+	<!-- Footer -->
 	<footer
 		class="flex w-full items-center justify-between overflow-hidden bg-black px-6 py-4 text-white"
 	>
@@ -94,7 +96,9 @@
 			Join the official Discord server and include <span class="text-blue-400">-vv</span> while submitting
 			your drip in the #drip-check channel!
 		</p>
-		<div class="flex-shrink-0">
+
+		<!-- Logo (Hidden on Mobile) -->
+		<div class="hidden lg:block flex-shrink-0">
 			<img
 				src="https://media.discordapp.net/attachments/856107075578888231/1409613885660598364/logo.png?ex=68ae04bb&is=68acb33b&hm=8d735d87cacf15c0b55368c07fb03c021e87d490bfaea562805a167790f94314&=&format=webp&quality=lossless"
 				alt="Vaiya Logo"
