@@ -156,7 +156,7 @@
   }
 
   function onContextMenu(event: MouseEvent) {
-    event.preventDefault(); // Prevent the default context menu
+    event.preventDefault();
 
     const pos = getMouseCanvasCoords(event);
     const idx = hitTest(pos.x, pos.y);

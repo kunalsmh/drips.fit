@@ -13,7 +13,7 @@
   const hexRadius = 12;
 
   const regions = {
-    asia:         { regionName: 'ASIA', name: 'Asia', lat: 35.0, lon: 100.0, count: 1 },
+    asia:         { regionName: 'ASIA', name: 'Asia', lat: 35.0, lon: 100.0, count: 2 },
     europe:       { regionName: 'EUROPE', name: 'Europe', lat: 54.0, lon: 15.0, count: 0 },
     northAmerica: { regionName: 'NORTH AMERICA', name: 'North America', lat: 45.0, lon: -100.0, count: 1 },
     southAmerica: { regionName: 'SOUTH AMERICA', name: 'South America', lat: -15.0, lon: -60.0, count: 0 },
