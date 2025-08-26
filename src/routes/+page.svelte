@@ -15,6 +15,7 @@
 
 	let search = '';
 	let filtered = [];
+	let loading = false;
 
 	// Banner visibility toggle
 	let showBanner = false;
@@ -34,19 +35,20 @@
 				.filter((image, index, self) => self.findIndex((i) => i.name === image.name) === index)
 		: [];
 
-	function handleClick(image: { x: number; y: number }) {
-		goto(`/canvas/${image.x},${image.y}`);
+	async function handleClick(image: { x: number; y: number }) {
+		loading = true;
+		await goto(`/canvas/${image.x},${image.y}`);
 	}
 </script>
 
-<!-- Top Banner: Made with ❤️ by Hiftie -->
-<div
+<!-- Top Banner -->
+<a href="https://kunalsh.com"
 	class="fixed top-0 left-0 z-50 w-full bg-black text-white text-center py-2 transition-transform duration-500 ease-in-out transform"
 	class:translate-y-0={showBanner}
 	class:-translate-y-full={!showBanner}
 >
-	Made with ❤️ by Hiftie
-</div>
+	Made with ❤️ by hiftie
+</a>
 
 <!-- Main Layout -->
 <div class="relative flex min-h-screen flex-col overflow-hidden bg-white text-black pt-10">
@@ -82,7 +84,9 @@
 			</form>
 
 			<!-- Filtered Results -->
-			{#if filtered.length > 0}
+			{#if loading}
+				<p class="mt-4 text-sm text-gray-500">Loading...</p>
+			{:else if filtered.length > 0}
 				<ul class="mt-2 w-full max-w-md overflow-hidden rounded-md border border-gray-200 bg-white text-left text-sm shadow">
 					{#each filtered as image}
 						<li>
